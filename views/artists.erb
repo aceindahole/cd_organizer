@@ -1,0 +1,21 @@
+<h1><%= @artists.artist_name() %></h1>
+
+<form action="/albums" method="post">
+  <input id='artist_id' name='artist_id' type='hidden' value='<%= @artists.id() %>'>
+  <label for='album'>Album's name:</label>
+  <input id='album' name='album' type='text' required>
+  <br>
+  <button type='submit' class='btn btn-success'>Add album</button>
+<form>
+  <br><br>
+
+<% if @artists.wrote() == [] %>
+  <p>There are currently no albums stored.</p>
+<% else @artists.wrote().each() do |album| %>
+  <ul>
+    <li><%= album %></a></li>
+  </ul>
+  <% end %>
+<% end %>
+
+<a href='/'>Go Back</a>

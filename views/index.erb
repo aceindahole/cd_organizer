@@ -19,7 +19,7 @@
   <p>There are currently no artists stored.</p>
 <% else @artists.each() do |artist| %>
   <ul>
-    <li><a href="/albums/<%= artist.id() %>"><%= artist.artist_name() %></a></li>
+    <li><a href="/artists/<%= artist.id() %>"><%= artist.artist_name() %></a></li>
   </ul>
   <% end %>
 <% end %>

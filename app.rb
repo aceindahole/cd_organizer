@@ -17,14 +17,18 @@ post('/artists') do
 end
 
 get('/artists/:id') do
-  @artists = Artist.find(params.fetch(@artists))
-  erb(:albums)
+  @artists = Artist.find(params.fetch('id').to_i())
+  @albums = Album.all()
+  erb(:artists)
 end
 
-get('/album') do
+post('/albums') do
   @album_name = params.fetch('album')
   @albums = Album.new({:album_name => @album_name}).save()
-
+  @artists = Artist.find(params.fetch('artist_id').to_i())
+  @artists.add_album(@album_name)
+  @albums = Album.all()
+  erb(:artists)
 end
 
 
