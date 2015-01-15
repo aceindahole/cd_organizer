@@ -1,9 +1,10 @@
 class Artist
-  attr_reader(:artist_name, :id)
+  attr_reader(:artist_name, :id, :wrote)
   @@artists = []
 
   define_method(:initialize) do |attributes|
     @artist_name = attributes.fetch(:artist_name)
+    @wrote = []
     @id = @@artists.length().+(1)
   end
 
@@ -25,5 +26,9 @@ class Artist
         return artist
       end
     end
+  end
+
+  define_method(:add_album) do |album|
+    @wrote.push(album)
   end
 end

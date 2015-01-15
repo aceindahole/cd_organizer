@@ -52,4 +52,13 @@ describe(Artist) do
       expect(Artist.find(test_artist.id())).to(eq(test_artist))
     end
   end
+
+  describe('#add_album') do
+    it('adds a new album to a artist class') do
+      test_artist = Artist.new({:artist_name => "The Beatles"})
+      test_album = Album.new({:album_name => "The White Album"})
+      test_artist.add_album(test_album)
+      expect(test_artist.wrote()).to(eq([test_album]))
+    end
+  end
 end
