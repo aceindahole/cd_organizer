@@ -1,0 +1,25 @@
+<h1>CD Organizer</h1>
+
+<h3>Add an artist here:</h3>
+
+<form action="/artists" method="post">
+  <label for='artist'>Artist's name:</label>
+  <input id='artist' name='artist' type='text' required>
+  <br>
+  <button type='submit' class='btn btn-success'>Add CD</button>
+<form>
+
+<!-- <form action="/" method="post">
+  <button type="submit" class="btn btn-danger">Clear Artist List</button>
+</form> -->
+
+  <br><br>
+
+<% if @artists == [] %>
+  <p>There are currently no artists stored.</p>
+<% else @artists.each() do |artist| %>
+  <ul>
+    <li><a href="/albums/<%= artist.id() %>"><%= artist.artist_name() %></a></li>
+  </ul>
+  <% end %>
+<% end %>
