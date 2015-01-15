@@ -8,7 +8,7 @@ describe(Album) do
 
   describe('#album_name') do
     it('returns the name of the album') do
-      test_album = Album.new("The White Album")
+      test_album = Album.new({:album_name => "The White Album"})
       expect(test_album.album_name()).to(eq("The White Album"))
     end
   end
@@ -21,7 +21,7 @@ describe(Album) do
 
   describe('#save') do
     it('saves the album name to the array of saved albums') do
-      test_album = Album.new("The White Album")
+      test_album = Album.new({:album_name => "The White Album"})
       test_album.save()
       expect(Album.all()).to(eq([test_album]))
     end
@@ -29,7 +29,7 @@ describe(Album) do
 
   describe('.clear') do
     it('empties out all of the saved albums') do
-      Album.new('The White Album').save()
+      Album.new({:album_name => "The White Album"}).save()
       Album.clear()
       expect(Album.all()).to(eq([]))
     end
@@ -37,9 +37,9 @@ describe(Album) do
 
   describe('.find') do
     it("returns a album by its id number") do
-      test_album = Album.new('The White Album')
+      test_album = Album.new({:album_name => "The White Album"})
       test_album.save()
-      test_album2 = Album.new("Sgt Pepper's")
+      test_album2 = Album.new({:album_name => "Sgt Pepper's"})
       test_album2.save()
       expect(Album.find(test_album.id())).to(eq(test_album))
     end
