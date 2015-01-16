@@ -30,12 +30,3 @@ post('/albums') do
   @albums = Album.all()
   erb(:artists)
 end
-
-
-
-#
-#
-# post("/") do
-#   @artists = Artist.clear()
-#   erb(:index)
-# end
